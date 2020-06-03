@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
     mode: "development",
+    watch: true,
     entry: {
         main: './src/main.js',
         },
@@ -18,12 +19,15 @@ module.exports = {
                 loader: "babel-loader",
             },
             {
-                test: /\.css$/,
+                test: /\.(sa|sc|c)ss$/,
+                exclude: /(node_modules|bower_components)/,
                 use: [
                     { loader: "style-loader" },
-                    { loader: "css-loader" }
+                    { loader: "css-loader" },
+                    { loader: "sass-loader" },
                 ]
-            }
+            },
+
         ]
     }
 

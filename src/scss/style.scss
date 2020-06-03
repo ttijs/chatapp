@@ -1,0 +1,11 @@
+$basiskleur: salmon;
+$basistekstkleur: black;
+
+body {
+    background:$basiskleur;
+    color: $basistekstkleur;
+}
+
+.form-control {
+    background-color: blue;
+}
