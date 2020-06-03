@@ -1,5 +1,5 @@
 const path = require('path');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: "development",
@@ -9,6 +9,7 @@ module.exports = {
         },
     output: {
         path: path.join(__dirname, 'public/assets'),
+        publicPath: '/', // in scss of js bestanden verwijzen naar andere assets met /andereasset.js|css|....
     },
 
     module: {
@@ -22,13 +23,18 @@ module.exports = {
                 test: /\.(sa|sc|c)ss$/,
                 exclude: /(node_modules|bower_components)/,
                 use: [
-                    { loader: "style-loader" },
+                    { loader: MiniCssExtractPlugin.loader },
                     { loader: "css-loader" },
                     { loader: "sass-loader" },
                 ]
             },
 
         ]
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+        }),
+    ],
 
 }
